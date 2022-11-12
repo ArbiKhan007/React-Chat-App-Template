@@ -23,7 +23,7 @@ function Listing(props) {
         <img src={props.userAvatar || userImage} alt="User Avatar" srcset="" />
 
         <div className={styles.threeDots}>
-          <img src={threeDots} alt="" srcset="" />
+          <img src={threeDots} alt="three dots" srcset="" />
         </div>
       </div>
       {chats.map((el) => {
@@ -33,6 +33,7 @@ function Listing(props) {
             key={el.userId}
             userId={el.userId}
             username={el.to}
+            lastMessage={el.messages[el.messages.length - 1]}
           />
         );
       })}

@@ -21,7 +21,7 @@ function Chat(props) {
         </div>
 
         <div className={styles.threeDots}>
-          <img src={threeDots} alt="" srcset="" />
+          <img src={threeDots} alt="three dots" />
         </div>
       </div>
 

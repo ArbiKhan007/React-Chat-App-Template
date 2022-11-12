@@ -9,7 +9,10 @@ function User(props) {
         <img src={props.userAvatar || avatar} alt={props.username} srcset="" />
       </div>
 
-      <span>{props.username}</span>
+      <div>
+        <span className={styles.userName}>{props.username}</span>
+        <span className={styles.lastMessage}>{props.lastMessage}</span>
+      </div>
     </div>
   );
 }
