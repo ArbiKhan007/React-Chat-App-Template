@@ -1,0 +1,28 @@
+.chatInput {
+  border-radius: 10px;
+  outline: none;
+  position: absolute;
+  width: 800px;
+  height: 40px;
+  bottom: 0;
+  padding: 9px 10px;
+  font-size: 15px;
+  margin: 10px;
+  background-color: #837f7f;
+  color: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: scroll;
+  resize: none;
+}
+
+.chatInput::placeholder {
+  color: #fff;
+}
+
+.chatInputContainer {
+  position: absolute;
+  bottom: 0;
+  background-color: #5d5c5c;
+  width: 100vw;
+  height: 60px;
+}
