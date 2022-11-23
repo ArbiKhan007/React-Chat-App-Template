@@ -50,6 +50,10 @@ function Chat(props) {
         }
       );
 
+      response.data.chats.forEach((el) => {
+        el.dateTime = formatAMPM(new Date(el.dateTime));
+      });
+
       console.log(response);
       if (!response.data.chats.length) {
         setWasLastList(true);
@@ -58,6 +62,7 @@ function Chat(props) {
 
       setPrevPage(currPage);
       setUserChats([...userChats, ...response.data.chats]);
+      dispatch({ type: "setIsLoading", value: false });
     };
 
     console.log(wasLastList, prevPage, currPage);
@@ -83,48 +88,6 @@ function Chat(props) {
       //dispatch({ type: "appendNewChat", value: chatObj });
     });
   }, []);
-
-  useEffect(() => {
-    props.socket.emit("join chat", state.openedChat._id);
-
-    if (!state.openedChat._id) {
-      return;
-    }
-
-    async function getConnectedUserChat() {
-      setShowUserList(false);
-
-      try {
-        const chats = await Axios.post(
-          "http://localhost:4000/get-chats",
-          {
-            token: localStorage.getItem("jwt"),
-            groupId: state.openedChat._id,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-
-        chats.data.chats.forEach((el) => {
-          el.dateTime = formatAMPM(new Date(el.dateTime));
-        });
-
-        console.log(chats.data.chats);
-
-        // chats.data.chats.forEach((el) => {
-        //   setSendersSet((prev) => prev.add(el.senderId));
-        // });
-
-        setUserChats(chats.data.chats);
-        dispatch({ type: "setIsLoading", value: false });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getConnectedUserChat();
-  }, [state.openedChat._id]);
 
   // const onScroll = () => {
   //   if (listInnerRef.current) {
