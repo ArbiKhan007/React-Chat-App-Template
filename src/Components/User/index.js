@@ -4,14 +4,18 @@ import avatar from "./img_avatar.png";
 
 function User(props) {
   return (
-    <div onClick={props.handleClickAction} className={styles.userTile}>
+    <div
+      data-user-id={props.user._id}
+      onClick={props.handleClickAction}
+      className={styles.userTile}
+    >
       <div className={styles.imgContainer}>
-        <img src={props.userAvatar || avatar} alt={props.username} srcset="" />
+        <img src={props.user.userAvatar || avatar} alt={props.user.username} />
       </div>
 
       <div>
-        <span className={styles.userName}>{props.username}</span>
-        <span className={styles.lastMessage}>{props.lastMessage}</span>
+        <span className={styles.userName}>{props.user.name}</span>
+        <span className={styles.lastMessage}>{props.user.lastMessage}</span>
       </div>
     </div>
   );

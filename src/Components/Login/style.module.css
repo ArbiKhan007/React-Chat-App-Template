@@ -1,0 +1,55 @@
+.formContainer {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  padding: 2rem 1rem;
+  border-radius: 20px;
+  width: 400px;
+  background: #83a4d4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #b6fbff,
+    #83a4d4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #b6fbff,
+    #83a4d4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.form {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  row-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+  display: block;
+  margin: 4px 0;
+}
+
+.input {
+  border: 0;
+  padding: 12px 8px;
+  border-radius: 0.45rem;
+  outline: none;
+  width: 300px;
+}
+
+.submit {
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 20px;
+}
+
+.background {
+  background: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    no-repeat;
+  object-fit: contain;
+  width: 100vw;
+  height: 100vh;
+}

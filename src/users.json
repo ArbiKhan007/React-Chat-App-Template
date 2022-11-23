@@ -1,0 +1,197 @@
+[
+  {
+    "userId": 1,
+    "to": "Sam",
+    "messages": [
+      "Hello Sam",
+      "Wassup",
+      "Where are you?",
+      "Call now",
+      "Meeting ASAP",
+      "Hello Sam",
+      "Who is terminator?",
+      "Why are you?",
+      "SSD",
+      "Laptop ASAP",
+      "What is Laptop?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP",
+      "Laptop ASAP",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP"
+    ]
+  },
+  {
+    "userId": 2,
+    "to": "Karan",
+    "messages": ["Hello Karan", "Wassup", "Who are you?", "Call now"]
+  },
+  {
+    "userId": 3,
+    "to": "Shiva",
+    "messages": [
+      "Hello Shiva",
+      "How are you?",
+      "Call now",
+      "Meeting Now",
+      "Google is your friend"
+    ]
+  },
+  {
+    "userId": 4,
+    "to": "Ajay",
+    "messages": ["Hello Ajay", "Wassup"]
+  },
+  {
+    "userId": 5,
+    "to": "Varun",
+    "messages": [
+      "Hello Varun",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP"
+    ]
+  },
+  {
+    "userId": 6,
+    "to": "Abhi",
+    "messages": [
+      "Hello Abhi",
+      "Wassup",
+      "This is magic",
+      "Call now",
+      "Meeting whenever"
+    ]
+  },
+  {
+    "userId": 7,
+    "to": "Sai",
+    "messages": [
+      "Hello Sai",
+      "Meeting whenever",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP"
+    ]
+  },
+  {
+    "userId": 8,
+    "to": "Mohd",
+    "messages": [
+      "Hello Mohd",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP",
+      "Meeting whenever",
+      "Meeting whenever"
+    ]
+  },
+  {
+    "userId": 9,
+    "to": "Amaan",
+    "messages": [
+      "Hello Amaan",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP"
+    ]
+  },
+  {
+    "userId": 10,
+    "to": "Ayaan",
+    "messages": [
+      "Hello Ayaan",
+      "Why are you doing this?",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP"
+    ]
+  },
+  {
+    "userId": 11,
+    "to": "Naruto",
+    "messages": [
+      "Hello Naruto",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP",
+      "Why are you doing this?",
+      "Why are you doing this?"
+    ]
+  },
+  {
+    "userId": 12,
+    "to": "Nayan",
+    "messages": [
+      "Why are you doing this?",
+      "Hello Nayan",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP"
+    ]
+  },
+  {
+    "userId": 13,
+    "to": "Aman",
+    "messages": [
+      "Hello Aman",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP",
+      "Hello Aman",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "PC ASAP",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP",
+      "Laptop ASAP",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP"
+    ]
+  },
+  {
+    "userId": 14,
+    "to": "Nisha",
+    "messages": [
+      "Hello Nisha",
+      "Wassup",
+      "Why are you?",
+      "Call now",
+      "Meeting ASAP",
+      "Hello Nisha",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP",
+      "Laptop ASAP",
+      "Who is terminator?",
+      "Why are you?",
+      "Disk",
+      "Laptop ASAP"
+    ]
+  },
+  {
+    "userId": 15,
+    "username": "Ravi"
+  }
+]

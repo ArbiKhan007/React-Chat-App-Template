@@ -5,6 +5,8 @@ function Index(props) {
   return (
     <div className={styles.chatInputContainer}>
       <textarea
+        ref={props.inputRef}
+        onChange={props.handleOnChange}
         placeholder={props.placeholder || "Your Message...."}
         className={styles.chatInput}
       />
