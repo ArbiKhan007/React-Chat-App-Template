@@ -32,41 +32,41 @@ function Chat(props) {
     bottomRef.current.scrollIntoView({ behavior: "smooth" });
   }, [userChats]);
 
-  // useEffect(() => {
-  //   if (!state.openedChat._id) {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!state.openedChat._id) {
+      return;
+    }
 
-  //   //pagination
-  //   const fetchData = async () => {
-  //     const response = await Axios.post(
-  //       `http://localhost:4000/get-chats?page=${currPage}`,
-  //       {
-  //         token: localStorage.getItem("jwt"),
-  //         groupId: state.openedChat._id,
-  //       },
-  //       {
-  //         headers: { "Content-Type": "application/json" },
-  //       }
-  //     );
+    //pagination
+    const fetchData = async () => {
+      const response = await Axios.post(
+        `http://localhost:4000/get-chats?page=${currPage}`,
+        {
+          token: localStorage.getItem("jwt"),
+          groupId: state.openedChat._id,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-  //     console.log(response);
-  //     if (!response.data.chats.length) {
-  //       setWasLastList(true);
-  //       return;
-  //     }
+      console.log(response);
+      if (!response.data.chats.length) {
+        setWasLastList(true);
+        return;
+      }
 
-  //     setPrevPage(currPage);
-  //     setUserChats([...userChats, ...response.data.chats]);
-  //   };
+      setPrevPage(currPage);
+      setUserChats([...userChats, ...response.data.chats]);
+    };
 
-  //   console.log(wasLastList, prevPage, currPage);
+    console.log(wasLastList, prevPage, currPage);
 
-  //   if (!wasLastList && prevPage !== currPage) {
-  //     console.log("function");
-  //     fetchData();
-  //   }
-  // }, [currPage, wasLastList, prevPage, userChats]);
+    if (!wasLastList && prevPage !== currPage) {
+      console.log("function");
+      fetchData();
+    }
+  }, [currPage, wasLastList, prevPage, userChats]);
 
   useEffect(() => {
     props.socket.on("chat from server", ({ message, senderName }) => {
