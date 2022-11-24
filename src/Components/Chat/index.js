@@ -39,6 +39,7 @@ function Chat(props) {
 
     //pagination
     const fetchData = async () => {
+      console.log("fetch data page " + currPage);
       const response = await Axios.post(
         `http://localhost:4000/get-chats?page=${currPage}`,
         {
@@ -61,7 +62,10 @@ function Chat(props) {
       }
 
       setPrevPage(currPage);
-      setUserChats([...userChats, ...response.data.chats]);
+      setUserChats((draft) => {
+        draft.unshift(...response.data.chats);
+      });
+      //setUserChats([...userChats, ...response.data.chats]);
       dispatch({ type: "setIsLoading", value: false });
     };
 
@@ -89,16 +93,63 @@ function Chat(props) {
     });
   }, []);
 
-  // const onScroll = () => {
-  //   if (listInnerRef.current) {
-  //     const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-  //     if (scrollTop + clientHeight === scrollHeight) {
-  //       // This will be triggered after hitting the last element.
-  //       // API call should be made here while implementing pagination.
-  //       setCurrPage(currPage + 1);
-  //     }
-  //   }
-  // };
+  useEffect(() => {
+    props.socket.emit("join chat", state.openedChat._id);
+
+    if (!state.openedChat._id) {
+      return;
+    }
+
+    setWasLastList(false);
+    setCurrPage(1);
+    setPrevPage(0);
+
+    async function getConnectedUserChat() {
+      setShowUserList(false);
+
+      try {
+        const chats = await Axios.post(
+          "http://localhost:4000/get-chats",
+          {
+            token: localStorage.getItem("jwt"),
+            groupId: state.openedChat._id,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        chats.data.chats.forEach((el) => {
+          el.dateTime = formatAMPM(new Date(el.dateTime));
+        });
+
+        console.log(chats.data.chats);
+
+        // chats.data.chats.forEach((el) => {
+        //   setSendersSet((prev) => prev.add(el.senderId));
+        // });
+
+        setUserChats(chats.data.chats);
+        dispatch({ type: "setIsLoading", value: false });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getConnectedUserChat();
+  }, [state.openedChat._id]);
+
+  const onScroll = () => {
+    if (listInnerRef.current) {
+      //const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (listInnerRef.current.scrollTop === 0) {
+        // This will be triggered after hitting the last element.
+        // API call should be made here while implementing pagination.
+        setCurrPage(currPage + 1);
+        //alert("at the top");
+      }
+    }
+  };
 
   function handleChatInput(e) {
     e.preventDefault();
@@ -284,7 +335,7 @@ function Chat(props) {
         </div>
 
         <div
-          // onScroll={onScroll}
+          onScroll={onScroll}
           ref={listInnerRef}
           className={styles.chatSection}
         >
