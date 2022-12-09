@@ -21,7 +21,7 @@ function Listing(props) {
     async function fetchUserGroups() {
       try {
         const groups = await Axios.post(
-          "http://localhost:4000/get-groups",
+          "https://treechat-serv-dev.up.railway.app/get-groups",
           { token: localStorage.getItem("jwt") },
           {
             headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ function Listing(props) {
       async function getAddedGroupInfo() {
         try {
           const response = await Axios.post(
-            "http://localhost:4000/get-singlegroup",
+            "https://treechat-serv-dev.up.railway.app/get-singlegroup",
             {
               token: localStorage.getItem("jwt"),
               groupId,
@@ -81,7 +81,7 @@ function Listing(props) {
       if (a) {
         try {
           const response = await Axios.post(
-            "http://localhost:4000/add-newgroup",
+            "https://treechat-serv-dev.up.railway.app/add-newgroup",
             {
               token: localStorage.getItem("jwt"),
               firstMember: localStorage.getItem("userId"),

@@ -41,7 +41,7 @@ function Chat(props) {
     const fetchData = async () => {
       console.log("fetch data page " + currPage);
       const response = await Axios.post(
-        `http://localhost:4000/get-chats?page=${currPage}&limit=20`,
+        `https://treechat-serv-dev.up.railway.app/get-chats?page=${currPage}&limit=20`,
         {
           token: localStorage.getItem("jwt"),
           groupId: state.openedChat._id,
@@ -110,7 +110,7 @@ function Chat(props) {
 
       try {
         const chats = await Axios.post(
-          "http://localhost:4000/get-chats",
+          "https://treechat-serv-dev.up.railway.app/get-chats",
           {
             token: localStorage.getItem("jwt"),
             groupId: state.openedChat._id,
@@ -199,7 +199,7 @@ function Chat(props) {
         );
 
         const chats = await Axios.post(
-          "http://localhost:4000/send-chat",
+          "https://treechat-serv-dev.up.railway.app/send-chat",
           {
             token: localStorage.getItem("jwt"),
             groupId: state.openedChat._id,
@@ -228,11 +228,14 @@ function Chat(props) {
 
     try {
       async function addUserToGroup() {
-        await Axios.post("http://localhost:4000/assign-usertogroup", {
-          token: localStorage.getItem("jwt"),
-          userId,
-          groupId: state.openedChat._id,
-        });
+        await Axios.post(
+          "https://treechat-serv-dev.up.railway.app/assign-usertogroup",
+          {
+            token: localStorage.getItem("jwt"),
+            userId,
+            groupId: state.openedChat._id,
+          }
+        );
 
         console.log("userId & groupId", userId, state.openedChat._id);
       }
@@ -266,7 +269,7 @@ function Chat(props) {
 
       try {
         const availableUser = await Axios.post(
-          "http://localhost:4000/get-allnongroupusers",
+          "https://treechat-serv-dev.up.railway.app/get-allnongroupusers",
           {
             token: localStorage.getItem("jwt"),
             groupId: state.openedChat._id,

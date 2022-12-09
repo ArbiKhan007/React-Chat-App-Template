@@ -17,7 +17,7 @@ function Register() {
     e.preventDefault();
     try {
       const resp = await Axios.post(
-        "http://localhost:4000/register",
+        "https://treechat-serv-dev.up.railway.app/register",
         {
           username,
           email,

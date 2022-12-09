@@ -13,7 +13,8 @@ import Chat from "./Components/Chat";
 import Listing from "./Components/Listing";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
-const socket = io("http://localhost:4000/");
+const socket = io("https://treechat-serv-dev.up.railway.app/");
+const root = "https://treechat-serv-dev.up.railway.app/";
 
 function App() {
   const initState = {
