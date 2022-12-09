@@ -3,6 +3,9 @@ import { useImmerReducer } from "use-immer";
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
 import io from "socket.io-client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 //
 import "./App.css";
@@ -20,7 +23,10 @@ function App() {
     openedChat: {},
     currentUser: "",
     isLoading: true,
+    lastMessage: "",
     message: "",
+    toast,
+    Swal,
   };
 
   function reducer(draft, action) {
@@ -33,6 +39,9 @@ function App() {
         break;
       case "setConnectedUsers":
         draft.connectedUser = action.value;
+        break;
+      case "appendANewGroup":
+        draft.connectedUser.push(action.value);
         break;
       case "setOpenedChat":
         draft.openedChat = action.value;
@@ -52,6 +61,9 @@ function App() {
       case "appendNewChat":
         draft.chats.push(action.value);
         break;
+      case "setLastMessage":
+        draft.lastMessage = action.value;
+        break;
 
       default:
         break;
@@ -60,18 +72,23 @@ function App() {
 
   const [state, dispatch] = useImmerReducer(reducer, initState);
 
+  state.loggedIn
+    ? socket.emit("join", { userId: localStorage.getItem("userId") })
+    : console.log("not logged in");
+
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
         <BrowserRouter>
           <div className="App">
+            <ToastContainer />
             <Routes>
               <Route
                 path="/"
                 element={
                   state.loggedIn ? (
                     <>
-                      <Listing />
+                      <Listing socket={socket} />
                       <Chat socket={socket} />
                     </>
                   ) : (

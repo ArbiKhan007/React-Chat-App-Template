@@ -5,16 +5,16 @@
   padding: 2rem 1rem;
   border-radius: 20px;
   width: 400px;
-  background: #83a4d4; /* fallback for old browsers */
+  background: #08a12f; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
     #b6fbff,
-    #83a4d4
+    #0aa443
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     #b6fbff,
-    #83a4d4
+    #0cc443
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -47,8 +47,7 @@
 }
 
 .background {
-  background: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
-    no-repeat;
+  background: url("./background.jpg") repeat;
   object-fit: contain;
   width: 100vw;
   height: 100vh;

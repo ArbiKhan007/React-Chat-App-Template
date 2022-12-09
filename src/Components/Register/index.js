@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 import Axios from "axios";
+import StateContext from "../../StateContext";
 
 function Register() {
   const [username, setUsername] = useState();
@@ -10,6 +11,7 @@ function Register() {
   const [phone, setPhone] = useState();
   const [errors, setErrors] = useState([]);
   let navigate = useNavigate();
+  const state = useContext(StateContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,6 +32,7 @@ function Register() {
         console.log(errors);
       } else {
         navigate("/");
+        state.toast("Yoohoo...Account Created Successfully");
       }
     } catch (e) {
       setErrors((prev) => prev.push("Email Already taken"));

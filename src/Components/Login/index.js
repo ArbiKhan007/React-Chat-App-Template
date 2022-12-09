@@ -35,6 +35,7 @@ function Login() {
         localStorage.setItem("username", resp.data.username);
         dispatch({ type: "setCurrentUser", value: resp.data.userId });
         dispatch({ type: "setLoggedIn" });
+        state.toast("Login Successful");
       }
     } catch (e) {
       setErrors(e.response.data.message);

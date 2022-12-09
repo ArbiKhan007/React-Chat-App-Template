@@ -29,7 +29,8 @@
   flex-direction: column;
   padding: 1rem;
   overflow: scroll;
-  background: url("https://media.istockphoto.com/vectors/set-of-contact-us-and-support-icons-vector-pattern-design-vector-id1183632265?k=20&m=1183632265&s=612x612&w=0&h=WrdRJWCQdgJbjFt9xaJ1ycGps16x2Xb7M1EwcfNFNcQ=");
+  background: url("./background.jpg") right top;
+  background-size: cover;
   height: 85vh;
 }
 
@@ -100,6 +101,10 @@
   justify-content: space-between;
 }
 
+.users:hover {
+  background-color: #058725;
+}
+
 .userInfo {
   flex: 1;
 }
@@ -107,8 +112,9 @@
 .threeDots {
   cursor: pointer;
   text-align: right;
-  background-color: #9c9d9d;
-  padding: 6px 10px;
+  background-color: #0cc43a;
+  padding: 5px 9px;
+  border-radius: 10px;
   margin: 0.5rem;
 }
 

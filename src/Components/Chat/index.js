@@ -41,7 +41,7 @@ function Chat(props) {
     const fetchData = async () => {
       console.log("fetch data page " + currPage);
       const response = await Axios.post(
-        `http://localhost:4000/get-chats?page=${currPage}`,
+        `http://localhost:4000/get-chats?page=${currPage}&limit=20`,
         {
           token: localStorage.getItem("jwt"),
           groupId: state.openedChat._id,
@@ -55,7 +55,6 @@ function Chat(props) {
         el.dateTime = formatAMPM(new Date(el.dateTime));
       });
 
-      console.log(response);
       if (!response.data.chats.length) {
         setWasLastList(true);
         return;
@@ -89,12 +88,14 @@ function Chat(props) {
       setUserChats((draft) => {
         draft.push(chatObj);
       });
-      //dispatch({ type: "appendNewChat", value: chatObj });
     });
   }, []);
 
   useEffect(() => {
-    props.socket.emit("join chat", state.openedChat._id);
+    props.socket.emit("join chat", {
+      room: state.openedChat._id,
+      userId: localStorage.getItem("userId"),
+    });
 
     if (!state.openedChat._id) {
       return;
@@ -130,6 +131,9 @@ function Chat(props) {
         // });
 
         setUserChats(chats.data.chats);
+        setCurrPage((prev) => prev + 1);
+        setPrevPage((prev) => prev + 1);
+
         dispatch({ type: "setIsLoading", value: false });
       } catch (error) {
         console.log(error);
@@ -146,7 +150,6 @@ function Chat(props) {
         // This will be triggered after hitting the last element.
         // API call should be made here while implementing pagination.
         setCurrPage(currPage + 1);
-        //alert("at the top");
       }
     }
   };
@@ -178,11 +181,11 @@ function Chat(props) {
       return;
     }
 
-    submitRef.current.disabled = true;
+    // submitRef.current.disabled = true;
 
-    setInterval(() => {
-      submitRef.current.disabled = false;
-    }, 500);
+    // setInterval(() => {
+    //   submitRef.current.disabled = false;
+    // }, 500);
 
     async function saveNewChat() {
       appendNewChat(state.message);
@@ -235,8 +238,20 @@ function Chat(props) {
       }
 
       addUserToGroup();
-      alert("User Added");
+
+      //notify user about new group
+      props.socket.emit("user_addedtogroup", {
+        userId,
+      });
+
+      props.socket.emit("notify_user", {
+        userId,
+        groupId: state.openedChat._id,
+      });
+
       setShowUserList(false);
+
+      state.toast("User added to the group");
     } catch (error) {
       console.log(error);
     }
@@ -245,7 +260,7 @@ function Chat(props) {
   function handleShowUser(e) {
     async function getAllAvailableUsers() {
       if (!state.openedChat._id) {
-        alert("Choose a group to add user.");
+        state.toast("Choose a group to add user.");
         return;
       }
 

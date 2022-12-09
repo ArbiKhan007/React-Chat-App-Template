@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./style.module.css";
 import avatar from "./img_avatar.png";
+import StateContext from "../../StateContext";
 
 function User(props) {
+  //const state = useContext(StateContext);
+
   return (
     <div
       data-user-id={props.user._id}

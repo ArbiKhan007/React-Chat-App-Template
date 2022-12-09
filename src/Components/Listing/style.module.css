@@ -1,7 +1,18 @@
 .contactListing {
   width: 500px;
   float: left;
-  background-color: #9ce2dc;
+  background: #136a8a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #267871,
+    #136a8a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #267871,
+    #136a8a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   height: 100vh;
   overflow: scroll;
 }
@@ -11,7 +22,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: #046a62;
+  background-color: #136a8a;
   color: beige;
 }
 
@@ -32,4 +43,11 @@
   height: 30px;
   width: 30px;
   filter: invert(1);
+}
+
+.userAvatar {
+}
+
+.userAvatar:hover {
+  transform: scale(1.2);
 }
